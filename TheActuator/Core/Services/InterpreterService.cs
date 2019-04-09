@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Data.Repositories
+namespace Core.Services
 {
-    class Repository
+    public class InterpreterService
     {
     }
 }
