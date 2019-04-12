@@ -1,6 +1,8 @@
-﻿using System;
+﻿using OpenQA.Selenium.Chrome;
+using System;
 using System.Collections.Generic;
 using System.Text;
+
 
 namespace Core.Services.Actions
 {
@@ -13,8 +15,11 @@ namespace Core.Services.Actions
         }
 
         public void Execute(List<string> parameters)
-        {
-            Console.WriteLine("Action = " + Name);
+        {            
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("--incognito");
+            var driver = new ChromeDriver("C:\\", options);
+
         }
     }
 }

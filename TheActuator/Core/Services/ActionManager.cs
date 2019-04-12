@@ -26,10 +26,8 @@ namespace Core.Services
 
         public static void Execute(Command command)
         {
-            // finds action on the list
             var action = _actions.FirstOrDefault(a => a.Name == command.Action);
 
-            // send to execution
             if (action != null)
             {
                 action.Execute(command.Params);
