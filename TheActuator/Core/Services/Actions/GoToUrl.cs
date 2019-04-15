@@ -1,20 +1,21 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Core.Services.Actions
 {
-    public class GoToUrl : IAction
+    public class GoToUrl : AbsAction
     {
-        public string Name { get; }
         public GoToUrl()
         {
             Name = "GoToUrl";
         }
 
-        public void Execute(List<string> parameters)
+        public override void Execute(List<string> parameters)
         {
-            Console.WriteLine("Action = " + Name);
+            var url = parameters[0];
+            ActionManager._driver.Navigate().GoToUrl(url);
         }
     }
 }

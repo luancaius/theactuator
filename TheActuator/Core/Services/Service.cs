@@ -10,6 +10,7 @@ namespace Core.Services
     {
         private IRepository _repository;
         private List<Command> _commands;
+        private int _loop;
         public Service()
         {
             ActionManager.LoadActions();
@@ -22,13 +23,16 @@ namespace Core.Services
         public void Execute()
         {
             var lines = _repository.GetSourceStream();
-
+            _loop = Convert.ToInt32(lines[0]);
+            lines.RemoveAt(0);
             _commands = Util.Converter.LinesToCommands(lines);
-
-            foreach(var command in _commands)
+            for(int i=0; i < _loop; i++)
             {
-                ActionManager.Execute(command);
-            }
+                foreach(var command in _commands)
+                {
+                    ActionManager.Execute(command);
+                }
+            }            
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿
 using Core.Services;
+using System;
 
 namespace UI.Console
 {
@@ -10,7 +11,14 @@ namespace UI.Console
             var service = new Service();
             var filename = "Sheet.csv";
             service.AddSource(filename);
-            service.Execute();
+            try
+            {
+                service.Execute();
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine(e.Message);
+            }
             System.Console.ReadLine();
         }
     }
