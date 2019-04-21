@@ -1,16 +1,14 @@
-﻿using OpenQA.Selenium;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Core.Services.Actions
 {
-    public class GoToUrl : AbsAction
+    public class Close : AbsAction
     {
         public override void Execute(List<string> parameters)
         {
-            var url = parameters[0];
-            ActionManager._driver.Navigate().GoToUrl(url);
+            ActionManager._driver.Close();
         }
     }
 }

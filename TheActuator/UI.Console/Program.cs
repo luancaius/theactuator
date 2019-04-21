@@ -8,8 +8,12 @@ namespace UI.Console
     {
         static void Main(string[] args)
         {
-            var service = new Service();
-            var filename = "Sheet.csv";
+            var debug = false;
+#if DEBUG
+            debug = true;
+#endif
+            var service = new Service(debug);
+            var filename = "Sheet.csv";            
             service.AddSource(filename);
             try
             {
@@ -19,6 +23,7 @@ namespace UI.Console
             {
                 System.Console.WriteLine(e.Message);
             }
+            System.Console.WriteLine("Press any key to exit");
             System.Console.ReadLine();
         }
     }

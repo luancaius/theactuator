@@ -10,10 +10,10 @@ namespace Core.Services
     {
         private IRepository _repository;
         private List<Command> _commands;
-        private int _loop;
-        public Service()
-        {
-            ActionManager.LoadActions();
+        private int _loop;        
+        public Service(bool isDebugMode)
+        {            
+            ActionManager.LoadActions(isDebugMode);
         }
         public void AddSource(string filename)
         {

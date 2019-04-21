@@ -1,4 +1,7 @@
-﻿Action;Param1;Param2;
-Open;Chrome;incognito;
-GoToUrl;www.google.com;
-
+﻿1
+Open;Chrome;
+GoToUrl;https://github.com/luancaius/theactuator;
+wait;1000;
+click;.pagehead-actions>li:nth-child(2)>a;
+wait;1000;
+close;

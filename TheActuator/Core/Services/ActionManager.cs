@@ -15,7 +15,7 @@ namespace Core.Services
 
         public static IWebDriver _driver { get; set; }
 
-        public static void LoadActions()
+        public static void LoadActions(bool isDebugMode)
         {
             var type = typeof(AbsAction);
             var actionClasses = AppDomain.CurrentDomain.GetAssemblies()
@@ -25,6 +25,7 @@ namespace Core.Services
             foreach(var actionClass in actionClasses)
             {
                 var instance = (AbsAction)Activator.CreateInstance(actionClass);
+                instance.SetConfiguration(isDebugMode);
                 _actions.Add(instance);
             }
         }
@@ -36,7 +37,10 @@ namespace Core.Services
             if (action != null)
             {
                 action.Execute(command.Params);
-                Thread.Sleep(1000);
+                if (action.IsDebug)
+                {
+                    action.DebugPrintConsole();
+                }
             }
         }
     }

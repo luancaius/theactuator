@@ -10,18 +10,15 @@ namespace Core.Services.Actions
 {
     public class Open : AbsAction
     {
-        public Open()
-        {
-            Name = "Open";
-        }
-
         public override void Execute(List<string> parameters)
         {
-            ChromeOptions options = new ChromeOptions();
-            options.AddArguments("--incognito");
-            string path = Environment.CurrentDirectory;
-            var driver = new ChromeDriver(path, options);
-            ActionManager._driver = driver;
+            if (parameters[0] == "Chrome")
+            {
+                ChromeOptions options = new ChromeOptions();
+                string path = Environment.CurrentDirectory;
+                var driver = new ChromeDriver(path, options);
+                ActionManager._driver = driver;
+            }
         }
     }
 }
